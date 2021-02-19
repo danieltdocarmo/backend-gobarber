@@ -12,6 +12,7 @@ export default class User {
     email: string;
 
     @Column()
+
     password: string;
 
     @Column()
@@ -22,5 +23,6 @@ export default class User {
 
     @UpdateDateColumn()
     updated_at: Date;
+
 
 }

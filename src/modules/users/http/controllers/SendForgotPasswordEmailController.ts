@@ -11,6 +11,7 @@ export default class ForgotPasswordController{
 
 
         const {email} = request.body;
+        console.log(email);
 
 
 

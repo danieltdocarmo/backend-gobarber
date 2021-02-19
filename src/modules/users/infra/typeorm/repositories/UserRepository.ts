@@ -1,4 +1,5 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Repository, Not } from 'typeorm';
+import usersRouter from '../../../http/routes/users.routes';
 import IUserRepository from '../../../repositories/IUserRepository';
 import User from '../entities/User';
 
@@ -33,6 +34,21 @@ export default class UserRepository implements IUserRepository{
 
     public async save(user: User):Promise<void>{
         await this.userRepository.save(user);
+    }
+
+    public async listAllUsers(except_user_id?: string): Promise<User[]>{
+        let users: User[] = [];
+        if(except_user_id){
+             users = await this.userRepository.find({
+                where: {
+                    id: Not(except_user_id)
+                }
+            })
+        }else{
+            users = await this.userRepository.find();
+        }
+        
+        return users;
     }
 
 }

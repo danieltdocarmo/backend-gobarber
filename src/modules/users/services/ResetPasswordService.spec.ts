@@ -3,7 +3,7 @@ import CreateUserService from "./CreateUserService";
 import FakeHashProvider from '../providers/hashProvider/fakes/FeakHashProvider';
 import ResetPasswordService from './ResetPasswordService';
 import FakeUserTokenRepository from "../repositories/fake/FakeUserTokenRepository";
-import BCryptHashProvider from "../providers/hashProvider/implementations/BcryptHashProvider";
+import BCryptHashProvider from "../providers/hashProvider/implementations/CryptHashProvider";
 import AppError from '../../../shared/erros/AppErro';
 import { getHours } from "date-fns";
 

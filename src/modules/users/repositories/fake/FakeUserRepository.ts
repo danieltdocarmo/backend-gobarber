@@ -6,7 +6,7 @@ import IUserRepository from '../IUserRepository';
 
 export default class FakeUserRepository implements IUserRepository{
     private userRepository: User[]= [];
-    constructor(){}
+
 
     public async findByEmail(email:string): Promise<User | undefined>{
         const findUser = this.userRepository.find(user =>
@@ -37,6 +37,16 @@ export default class FakeUserRepository implements IUserRepository{
             user.id === userData.id)
 
         this.userRepository[findUser] = userData;
+    }
+
+    public async listAllUsers(except_user_id?:string) : Promise<User[]>{
+        let { userRepository } = this;
+
+        if(except_user_id){
+            userRepository = userRepository.filter( user => user.id != except_user_id);
+        }
+        
+        return userRepository;
     }
 
 

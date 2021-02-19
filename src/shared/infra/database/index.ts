@@ -1,9 +1,9 @@
-import { createConnection } from 'typeorm';
+import { createConnections } from 'typeorm';
 
-const connection = ()=> {
-    createConnection()
-        .then(connection => { console.log("connection stabileshed") })
+const connections = ()=> {
+    createConnections()
+        .then(connections => { console.log("connection stabileshed") })
         .catch(error => { console.log(error) });
 }
 
-export default connection;
+export default connections;

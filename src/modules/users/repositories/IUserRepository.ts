@@ -6,4 +6,5 @@ export default interface IUserRepository{
     findById(id: string): Promise<User | undefined>;
     createAndSave(user: IUserDTO): Promise<User>;
     save(user: User): Promise<void>;
+    listAllUsers(except_user_id?:string): Promise<User[]>;
 }

@@ -12,7 +12,7 @@ interface TokenPayload{
 }
 
 export default function ensureAuthentication(request:Request, response:Response, next: NextFunction):void{
-    
+
     const authHeader = request.headers.authorization;
 
     if(!authHeader){
@@ -28,6 +28,7 @@ export default function ensureAuthentication(request:Request, response:Response,
     if(!decoded){
         throw new AppErro('Invalid Token', 400);
     }
+    
     const { sub } = decoded as TokenPayload;
 
     request.user = {

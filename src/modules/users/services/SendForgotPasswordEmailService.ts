@@ -23,8 +23,10 @@ export default class SendForgotEmailService{
         }
  
 
-        await this.userTokenRepository.generate(checkUserExists.id);
+        const {token} = await this.userTokenRepository.generate(checkUserExists.id);
 
-        await this.mailProvider.sendEmail(email, 'daniel');
+        await this.mailProvider.generateProvider();
+
+        await this.mailProvider.sendEmail(email, `${process.env.APP_API_URL}/reset_password?token=${token}`);
     }
 }

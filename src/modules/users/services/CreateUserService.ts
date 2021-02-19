@@ -1,5 +1,5 @@
 
-import IHashProvider from '../providers/hashProvider/implementations/BcryptHashProvider';
+import IHashProvider from '../providers/hashProvider/models/IHashProvider';
 import User from '../infra/typeorm/entities/User';
 import UserMap from '../mappers/UserMap';
 import AppErro from '../../../shared/erros/AppErro';
